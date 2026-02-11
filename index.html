@@ -1,109 +1,204 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Smart Music Playlist Manager</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Styles -->
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <header>
-        <h1>Smart Music Playlist Manager</h1>
+      <h1>Smart Music Playlist Manager</h1>
     </header>
 
     <main>
+      <!-- ========================= -->
+      <!-- Now Playing Section -->
+      <!-- ========================= -->
+      <section id="now-playing-section">
+        <h2>Now Playing</h2>
 
-        <!-- ========================= -->
-        <!-- Now Playing Section -->
-        <!-- ========================= -->
-        <section id="now-playing-section">
-            <h2>Now Playing</h2>
-            <div id="now-playing">
-                <p id="current-title">No song selected</p>
-                <p id="current-artist"></p>
+        <!-- Animated Music Visualizer Bars -->
+        <div class="music-visualizer">
+          <div class="music-bar"></div>
+          <div class="music-bar"></div>
+          <div class="music-bar"></div>
+          <div class="music-bar"></div>
+          <div class="music-bar"></div>
+        </div>
+
+        <!-- Now Playing with Album Art -->
+        <div id="now-playing">
+          <div class="now-playing-container">
+            <div class="album-art-container">
+              <img alt="album-art" style="display: none" />
             </div>
-
-            <!-- Audio Element -->
-            <audio id="audio-player" controls>
-                Your browser does not support the audio element.
-            </audio>
-        </section>
-
-
-        <!-- ========================= -->
-        <!-- Controls Section -->
-        <!-- ========================= -->
-        <section id="controls-section">
-            <h2>Controls</h2>
-
-            <div class="controls">
-                <button id="play-btn">Play</button>
-                <button id="pause-btn">Pause</button>
-                <button id="prev-btn">Previous</button>
-                <button id="next-btn">Next</button>
-                <button id="undo-btn">Undo</button>
-                <button id="redo-btn">Redo</button>
+            <div class="now-playing-info">
+              <p id="current-title">No song selected</p>
+              <p id="current-artist"></p>
             </div>
-        </section>
+          </div>
+        </div>
 
+        <!-- Audio Element -->
+        <audio id="audio-player" controls>
+          Your browser does not support the audio element.
+        </audio>
+      </section>
 
-        <!-- ========================= -->
-        <!-- Playlist Display Section -->
-        <!-- ========================= -->
-        <section id="playlist-section">
-            <h2>Playlist</h2>
-            <ul id="playlist">
-                <!-- Songs will be dynamically rendered here -->
-            </ul>
-        </section>
+      <!-- ========================= -->
+      <!-- Controls Section -->
+      <!-- ========================= -->
+      <section id="controls-section">
+        <h2>Controls</h2>
 
+        <div class="controls">
+          <button id="play-btn">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+            <span>Play</span>
+          </button>
+          <button id="pause-btn">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
+            </svg>
+            <span>Pause</span>
+          </button>
+          <button id="prev-btn">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 6h2v12H6V6zm3.5 6l8.5 6V6z" />
+            </svg>
+            <span>Previous</span>
+          </button>
+          <button id="next-btn">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M16 18h2V6h-2v12zM4 18l8.5-6L4 6z" />
+            </svg>
+            <span>Next</span>
+          </button>
+          <button id="undo-btn">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M12.5 8c-2.65 0-5.05.99-6.9 2.6L2 7v9h9l-3.62-3.62c1.39-1.16 3.16-1.88 5.12-1.88 3.54 0 6.55 2.36 7.6 5.5l2.12-.88C19.5 9.99 16.56 8 13 8z"
+                transform="scale(-1, 1) translate(-24, 0)"
+              />
+            </svg>
+            <span>Undo</span>
+          </button>
+          <button id="redo-btn">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M18.4 10.6C16.55 9 14.15 8 11.5 8c-4.65 0-8.58 3.72-8.95 8.4H0v9h9v-9H6.05C6.42 11.05 9.35 9 11.5 9c2.04 0 3.81.7 5.2 1.86l-2.62 2.62h8V8l-3.4 2.6z"
+              />
+            </svg>
+            <span>Redo</span>
+          </button>
+        </div>
+      </section>
 
-        <!-- ========================= -->
-        <!-- Add Song Section -->
-        <!-- ========================= -->
-        <section id="add-song-section">
-            <h2>Add Song</h2>
+      <!-- ========================= -->
+      <!-- Playlist Display Section -->
+      <!-- ========================= -->
+      <section id="playlist-section">
+        <h2>Playlist</h2>
+        <ul id="playlist">
+          <!-- Songs will be dynamically rendered here with structure:
+                <li>
+                    <div class="playlist-album-art">
+                        <img alt="cover" src="album-url">
+                    </div>
+                    <div class="playlist-item-info">
+                        <div class="playlist-item-title">Song Title</div>
+                        <div class="playlist-item-artist">Artist Name</div>
+                    </div>
+                </li>
+                -->
+        </ul>
+      </section>
 
-            <form id="add-song-form">
-                <label>
-                    Title:
-                    <input type="text" id="song-title" required>
-                </label>
+      <!-- ========================= -->
+      <!-- Add Song Section -->
+      <!-- ========================= -->
+      <section id="add-song-section">
+        <h2>Add Song</h2>
 
-                <label>
-                    Artist:
-                    <input type="text" id="song-artist" required>
-                </label>
+        <form id="add-song-form">
+          <label>
+            Title:
+            <input
+              type="text"
+              id="song-title"
+              placeholder="Song title"
+              required
+            />
+          </label>
 
-                <label>
-                    Audio URL:
-                    <input type="url" id="song-url" required>
-                </label>
+          <label>
+            Artist:
+            <input
+              type="text"
+              id="song-artist"
+              placeholder="Artist name"
+              required
+            />
+          </label>
 
-                <button type="submit">Add Song</button>
-            </form>
-        </section>
+          <label>
+            Audio URL:
+            <input
+              type="url"
+              id="song-url"
+              placeholder="https://example.com/song.mp3"
+              required
+            />
+          </label>
 
+          <label>
+            Album Art URL (optional):
+            <input
+              type="url"
+              id="song-cover"
+              placeholder="https://example.com/cover.jpg"
+            />
+          </label>
 
-        <!-- ========================= -->
-        <!-- Remove Song Section -->
-        <!-- ========================= -->
-        <section id="remove-song-section">
-            <h2>Remove Song</h2>
+          <button type="submit">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+            </svg>
+            <span>Add Song</span>
+          </button>
+        </form>
+      </section>
 
-            <label>
-                Enter Song Title:
-                <input type="text" id="remove-title">
-            </label>
+      <!-- ========================= -->
+      <!-- Remove Song Section -->
+      <!-- ========================= -->
+      <section id="remove-song-section">
+        <h2>Remove Song</h2>
 
-            <button id="remove-btn">Remove Song</button>
-        </section>
+        <label>
+          Enter Song Title:
+          <input
+            type="text"
+            id="remove-title"
+            placeholder="Song title to remove"
+          />
+        </label>
 
+        <button id="remove-btn">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"
+            />
+          </svg>
+          <span>Remove Song</span>
+        </button>
+      </section>
     </main>
-
 
     <!-- ========================= -->
     <!-- Script Files (Order Matters) -->
@@ -118,6 +213,5 @@
 
     <!-- Application Logic -->
     <script src="app.js"></script>
-
-</body>
+  </body>
 </html>
