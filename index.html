@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Smart Music Playlist Manager</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Smart Music Playlist Manager</h1>
+    </header>
+
+    <main>
+
+        <!-- ========================= -->
+        <!-- Now Playing Section -->
+        <!-- ========================= -->
+        <section id="now-playing-section">
+            <h2>Now Playing</h2>
+            <div id="now-playing">
+                <p id="current-title">No song selected</p>
+                <p id="current-artist"></p>
+            </div>
+
+            <!-- Audio Element -->
+            <audio id="audio-player" controls>
+                Your browser does not support the audio element.
+            </audio>
+        </section>
+
+
+        <!-- ========================= -->
+        <!-- Controls Section -->
+        <!-- ========================= -->
+        <section id="controls-section">
+            <h2>Controls</h2>
+
+            <div class="controls">
+                <button id="play-btn">Play</button>
+                <button id="pause-btn">Pause</button>
+                <button id="prev-btn">Previous</button>
+                <button id="next-btn">Next</button>
+                <button id="undo-btn">Undo</button>
+                <button id="redo-btn">Redo</button>
+            </div>
+        </section>
+
+
+        <!-- ========================= -->
+        <!-- Playlist Display Section -->
+        <!-- ========================= -->
+        <section id="playlist-section">
+            <h2>Playlist</h2>
+            <ul id="playlist">
+                <!-- Songs will be dynamically rendered here -->
+            </ul>
+        </section>
+
+
+        <!-- ========================= -->
+        <!-- Add Song Section -->
+        <!-- ========================= -->
+        <section id="add-song-section">
+            <h2>Add Song</h2>
+
+            <form id="add-song-form">
+                <label>
+                    Title:
+                    <input type="text" id="song-title" required>
+                </label>
+
+                <label>
+                    Artist:
+                    <input type="text" id="song-artist" required>
+                </label>
+
+                <label>
+                    Audio URL:
+                    <input type="url" id="song-url" required>
+                </label>
+
+                <button type="submit">Add Song</button>
+            </form>
+        </section>
+
+
+        <!-- ========================= -->
+        <!-- Remove Song Section -->
+        <!-- ========================= -->
+        <section id="remove-song-section">
+            <h2>Remove Song</h2>
+
+            <label>
+                Enter Song Title:
+                <input type="text" id="remove-title">
+            </label>
+
+            <button id="remove-btn">Remove Song</button>
+        </section>
+
+    </main>
+
+
+    <!-- ========================= -->
+    <!-- Script Files (Order Matters) -->
+    <!-- ========================= -->
+
+    <!-- Data Structures -->
+    <script src="structures/DoublyLinkedList.js"></script>
+    <script src="structures/Stack.js"></script>
+
+    <!-- Controller -->
+    <script src="controllers/PlaylistController.js"></script>
+
+    <!-- Application Logic -->
+    <script src="app.js"></script>
+
+</body>
+</html>
