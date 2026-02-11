@@ -800,36 +800,134 @@ form label {
   display: inline-flex;
 }
 
+/* =========================
+   Add Song Form Input Styling
+========================= */
 form input {
   width: 100%;
   max-width: 100%;
   padding: 14px 18px;
   margin-top: 10px;
   margin-bottom: 18px;
-  border: 2.5px solid #e8e8f0;
+  border: 2.5px solid #e8e8f0 !important;
   border-radius: 12px;
   font-size: 1rem;
+  line-height: 1.5 !important;
   transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  background: #f9f9ff;
+  background: #f9f9ff !important;
+  color: #1a1a1a !important;
   font-family: inherit;
   position: relative;
   z-index: 1;
   box-sizing: border-box;
+  -webkit-appearance: none;
+  appearance: none;
+  font-weight: 500 !important;
+  letter-spacing: 0.3px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -webkit-text-fill-color: #1a1a1a !important;
 }
 
+/* Target all text-like input types explicitly */
+form input[type="text"],
+form input[type="url"],
+form input[type="email"],
+form input[type="search"],
+form input[type="password"],
+form input[type="number"],
+form input[type="tel"] {
+  background-color: #f9f9ff !important;
+  color: #1a1a1a !important;
+  -webkit-text-fill-color: #1a1a1a !important;
+  border: 2.5px solid #e8e8f0 !important;
+  font-weight: 500 !important;
+}
+
+/* Fix placeholder text visibility - dark gray with high contrast */
 form input::placeholder {
-  color: #999;
-  opacity: 0.7;
+  color: #555 !important;
+  -webkit-text-fill-color: #555 !important;
+  opacity: 1 !important;
+  font-weight: 400 !important;
 }
 
+form input::-webkit-input-placeholder {
+  color: #555 !important;
+  -webkit-text-fill-color: #555 !important;
+  opacity: 1 !important;
+  font-weight: 400 !important;
+}
+
+form input::-moz-placeholder {
+  color: #555 !important;
+  opacity: 1 !important;
+  font-weight: 400 !important;
+}
+
+form input:-ms-input-placeholder {
+  color: #555 !important;
+  opacity: 1 !important;
+  font-weight: 400 !important;
+}
+
+form input::-webkit-outer-spin-button,
+form input::-webkit-inner-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0 !important;
+}
+
+form input[type="number"] {
+  -moz-appearance: textfield !important;
+}
+
+/* Focus state for inputs */
 form input:focus {
-  outline: none;
-  border-color: #667eea;
-  background: #fff;
+  outline: none !important;
+  border-color: #667eea !important;
+  background: #fff !important;
+  color: #1a1a1a !important;
+  -webkit-text-fill-color: #1a1a1a !important;
   box-shadow:
     0 0 0 4px rgba(102, 126, 234, 0.15),
-    0 8px 24px rgba(102, 126, 234, 0.2);
+    0 8px 24px rgba(102, 126, 234, 0.2),
+    inset 0 0 0 1px rgba(102, 126, 234, 0.1);
   transform: translateY(-3px);
+}
+
+/* Ensure text is visible when typing in all input types */
+form input[type="text"]:focus,
+form input[type="url"]:focus,
+form input[type="email"]:focus,
+form input[type="search"]:focus,
+form input[type="password"]:focus,
+form input[type="number"]:focus,
+form input[type="tel"]:focus {
+  background-color: #fff !important;
+  color: #1a1a1a !important;
+  -webkit-text-fill-color: #1a1a1a !important;
+  border-color: #667eea !important;
+  caret-color: #667eea !important;
+}
+
+/* Ensure placeholder remains visible in focus state */
+form input:focus::placeholder {
+  color: #888 !important;
+  -webkit-text-fill-color: #888 !important;
+}
+
+form input:focus::-webkit-input-placeholder {
+  color: #888 !important;
+  -webkit-text-fill-color: #888 !important;
+}
+
+form input:focus::-moz-placeholder {
+  color: #888 !important;
+}
+
+form input:focus:-ms-input-placeholder {
+  color: #888 !important;
 }
 
 form button {

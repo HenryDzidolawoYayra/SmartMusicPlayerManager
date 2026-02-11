@@ -99,9 +99,9 @@ const initialSongs = [
 ============================================================ */
 
 function initializePlaylist() {
-    initialSongs.forEach(song => {
-        controller.addSong(song);
-    });
+    // Use the new initializePlaylist method to load songs
+    // without adding them to the undo stack
+    controller.initializePlaylist(initialSongs);
 
     renderPlaylist();
     updateNowPlaying();
