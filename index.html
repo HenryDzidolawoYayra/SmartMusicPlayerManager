@@ -4,20 +4,54 @@
     <meta charset="UTF-8" />
     <title>Smart Music Playlist Manager</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A premium music playlist manager with smart controls and beautiful UI"
+    />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- Styles -->
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header>
-      <h1>Smart Music Playlist Manager</h1>
-    </header>
+    <main class="app-container">
+      <!-- Modern Header -->
+      <header class="app-header">
+        <div class="header-content">
+          <div class="logo">
+            <svg
+              class="logo-icon"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle cx="6" cy="12" r="2" fill="currentColor" />
+              <circle cx="12" cy="6" r="3" fill="currentColor" />
+              <circle cx="18" cy="12" r="2" fill="currentColor" />
+              <path
+                d="M6 14c1.5 2 2.5 3 6 3s4.5-1 6-3"
+                stroke="currentColor"
+                stroke-width="2"
+                fill="none"
+              />
+            </svg>
+            <h1>Sonic</h1>
+          </div>
+          <p class="tagline">Premium Music Playlist Manager</p>
+        </div>
+      </header>
 
-    <main>
+      <!-- Main Content Area -->
       <!-- ========================= -->
       <!-- Now Playing Section -->
       <!-- ========================= -->
-      <section id="now-playing-section">
+      <section id="now-playing-section" class="card card-primary">
         <h2>Now Playing</h2>
 
         <!-- Animated Music Visualizer Bars -->
@@ -51,35 +85,35 @@
       <!-- ========================= -->
       <!-- Controls Section -->
       <!-- ========================= -->
-      <section id="controls-section">
+      <section id="controls-section" class="card">
         <h2>Controls</h2>
 
-        <div class="controls">
-          <button id="play-btn">
+        <div class="controls-grid">
+          <button id="play-btn" class="btn btn-control" title="Play">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path d="M8 5v14l11-7z" />
             </svg>
             <span>Play</span>
           </button>
-          <button id="pause-btn">
+          <button id="pause-btn" class="btn btn-control" title="Pause">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
             </svg>
             <span>Pause</span>
           </button>
-          <button id="prev-btn">
+          <button id="prev-btn" class="btn btn-control" title="Previous">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path d="M6 6h2v12H6V6zm3.5 6l8.5 6V6z" />
             </svg>
             <span>Previous</span>
           </button>
-          <button id="next-btn">
+          <button id="next-btn" class="btn btn-control" title="Next">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path d="M16 18h2V6h-2v12zM4 18l8.5-6L4 6z" />
             </svg>
             <span>Next</span>
           </button>
-          <button id="undo-btn">
+          <button id="undo-btn" class="btn btn-control" title="Undo">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M12.5 8c-2.65 0-5.05.99-6.9 2.6L2 7v9h9l-3.62-3.62c1.39-1.16 3.16-1.88 5.12-1.88 3.54 0 6.55 2.36 7.6 5.5l2.12-.88C19.5 9.99 16.56 8 13 8z"
@@ -88,7 +122,7 @@
             </svg>
             <span>Undo</span>
           </button>
-          <button id="redo-btn">
+          <button id="redo-btn" class="btn btn-control" title="Redo">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M18.4 10.6C16.55 9 14.15 8 11.5 8c-4.65 0-8.58 3.72-8.95 8.4H0v9h9v-9H6.05C6.42 11.05 9.35 9 11.5 9c2.04 0 3.81.7 5.2 1.86l-2.62 2.62h8V8l-3.4 2.6z"
@@ -102,7 +136,7 @@
       <!-- ========================= -->
       <!-- Playlist Display Section -->
       <!-- ========================= -->
-      <section id="playlist-section">
+      <section id="playlist-section" class="card">
         <h2>Playlist</h2>
         <ul id="playlist">
           <!-- Songs will be dynamically rendered here with structure:
@@ -122,50 +156,50 @@
       <!-- ========================= -->
       <!-- Add Song Section -->
       <!-- ========================= -->
-      <section id="add-song-section">
+      <section id="add-song-section" class="card">
         <h2>Add Song</h2>
 
-        <form id="add-song-form">
-          <label>
-            Title:
+        <form id="add-song-form" class="form">
+          <div class="form-group">
+            <label for="song-title">Song Title</label>
             <input
               type="text"
               id="song-title"
-              placeholder="Song title"
+              placeholder="e.g., Blinding Lights"
               required
             />
-          </label>
+          </div>
 
-          <label>
-            Artist:
+          <div class="form-group">
+            <label for="song-artist">Artist Name</label>
             <input
               type="text"
               id="song-artist"
-              placeholder="Artist name"
+              placeholder="e.g., The Weeknd"
               required
             />
-          </label>
+          </div>
 
-          <label>
-            Audio URL:
+          <div class="form-group">
+            <label for="song-url">Audio URL</label>
             <input
               type="url"
               id="song-url"
               placeholder="https://example.com/song.mp3"
               required
             />
-          </label>
+          </div>
 
-          <label>
-            Album Art URL (optional):
+          <div class="form-group">
+            <label for="song-cover">Album Art (optional)</label>
             <input
               type="url"
               id="song-cover"
               placeholder="https://example.com/cover.jpg"
             />
-          </label>
+          </div>
 
-          <button type="submit">
+          <button type="submit" class="btn btn-primary">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
             </svg>
@@ -177,26 +211,27 @@
       <!-- ========================= -->
       <!-- Remove Song Section -->
       <!-- ========================= -->
-      <section id="remove-song-section">
+      <section id="remove-song-section" class="card">
         <h2>Remove Song</h2>
 
-        <label>
-          Enter Song Title:
-          <input
-            type="text"
-            id="remove-title"
-            placeholder="Song title to remove"
-          />
-        </label>
-
-        <button id="remove-btn">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"
+        <div class="form-group">
+          <label for="remove-title">Song Title</label>
+          <div class="input-with-button">
+            <input
+              type="text"
+              id="remove-title"
+              placeholder="Enter song title to remove"
             />
-          </svg>
-          <span>Remove Song</span>
-        </button>
+            <button id="remove-btn" class="btn btn-danger" title="Delete song">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"
+                />
+              </svg>
+              <span>Remove</span>
+            </button>
+          </div>
+        </div>
       </section>
     </main>
 

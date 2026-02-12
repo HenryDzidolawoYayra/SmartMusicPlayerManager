@@ -102,11 +102,3 @@ class Stack {
         return this.items.length;
     }
 }
-
-
-/*
-    Exporting class (for modular usage)
-    If using ES Modules, uncomment export line.
-*/
-
-// export default Stack;

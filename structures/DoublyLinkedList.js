@@ -420,5 +420,3 @@ class DoublyLinkedList {
         return result;
     }
 }
-
-// export default DoublyLinkedList;
